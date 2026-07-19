@@ -4,16 +4,15 @@ This repository contains the participant and teacher resource site for **Paul’
 
 ## Current status
 
-- Initial review build
-- GitHub Pages is not yet enabled
+- Shareable first release
 - The schedule contains 24 lessons
-- Lesson 1 participant and teacher resources are included
-- Lessons 2–4 are listed as in preparation
+- Participant and teacher resources for Lessons 1–4 are included
 
 ## Structure
 
 - `index.html` — participant-facing home page
 - `lessons.html` — lesson resources
+- `lesson-2.html`, `lesson-3.html`, `lesson-4.html` — participant lesson pages
 - `schedule.html` — interactive 24-lesson schedule
 - `teachers.html` — public teacher resources
 - `reading.html` — Whole Bible → Whole Letter → Passage framework

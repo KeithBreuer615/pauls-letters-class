@@ -25,6 +25,15 @@ const lessons = [
   { n: 24, group: "pastoral", title: "2 Timothy", texts: "2 Timothy 1–4", focus: "Guard the gospel and finish well", next: "Review the series and continue reading Paul’s letters as whole letters" }
 ];
 
+const publishedLessonPages = new Map([
+  [1, "lessons.html#lesson-1"],
+  [2, "lesson-2.html"],
+  [3, "lesson-3.html"],
+  [4, "lesson-4.html"],
+  [5, "lesson-5.html"],
+  [6, "lesson-6.html"]
+]);
+
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 if (navToggle && siteNav) {
@@ -51,13 +60,18 @@ function escapeHtml(value) {
 function renderSchedule(group = "all") {
   if (!scheduleList) return;
   const visible = lessons.filter((lesson) => group === "all" || lesson.group === group);
-  scheduleList.innerHTML = visible.map((lesson) => `
-    <article class="schedule-item">
+  scheduleList.innerHTML = visible.map((lesson) => {
+    const lessonUrl = publishedLessonPages.get(lesson.n);
+    const content = `
       <span class="week" aria-label="Lesson ${lesson.n}">${lesson.n}</span>
       <div><span class="schedule-label">Lesson</span><h2>${escapeHtml(lesson.title)}</h2><p>${escapeHtml(lesson.focus)}</p></div>
       <div><span class="schedule-label">Primary texts</span><p><strong>${escapeHtml(lesson.texts)}</strong></p></div>
-      <div><span class="schedule-label">Read before the next lesson</span><p>${escapeHtml(lesson.next)}</p></div>
-    </article>`).join("");
+      <div><span class="schedule-label">Read before the next lesson</span><p>${escapeHtml(lesson.next)}</p></div>`;
+
+    return lessonUrl
+      ? `<a class="schedule-item schedule-item-link" href="${lessonUrl}" aria-label="Open Lesson ${lesson.n}: ${escapeHtml(lesson.title)}">${content}</a>`
+      : `<article class="schedule-item">${content}</article>`;
+  }).join("");
 }
 
 if (scheduleList) {

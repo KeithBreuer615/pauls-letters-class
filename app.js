@@ -35,7 +35,8 @@ const publishedLessonPages = new Map([
   [7, "lesson-7.html"],
   [8, "lesson-8.html"],
   [9, "lesson-9.html"],
-  [10, "lesson-10.html"]
+  [10, "lesson-10.html"],
+  [11, "lesson-11.html"]
 ]);
 
 const navToggle = document.querySelector(".nav-toggle");
